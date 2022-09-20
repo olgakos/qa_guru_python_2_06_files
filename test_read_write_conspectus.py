@@ -1,3 +1,5 @@
+# запуск:  python test_read_write_conspectus.py
+
 import os
 
 def test_simple1():
@@ -10,7 +12,7 @@ def test_simple2():
 
 #библиотека os // import os
 #путь к файлу
-#распечатать ответ simple_conspectus_about_read_write_files.py::test_file_size0 PASSED [100%]4096
+#распечатать ответ test_read_write_conspectus.py::test_file_size0 PASSED [100%]4096
 def test_file_size0():
     picture_size = os.path.getsize('./resources/sampleFile.jpeg')
     print(picture_size)
@@ -27,14 +29,14 @@ def test_file_size():
     #assert picture_size == 4097 #упадет
     print(os.path.abspath('./resources/sampleFile.jpeg')) #узнАем абсолютный путь к файлу
 
-# запуск: python simple_conspectus_about_read_write_files.py
+# запуск: python test_read_write_conspectus.py
 #команда напечатать путь к директории. Полезно для дебага. Или чтобы найти пусть к проекту или к Питону. Далее примеры
 os.path.dirname(os.path.abspath('./resources/sampleFile.jpeg'))
 
 #ЗДЕСЬ: join "для склеивания пути в разных ОС
 #"а) узнай имя(current_dir) папки откуда был запущен скрипт (__file__), б) приклей к ней имя(current_dir=ресурсы) в) принт"
 # отклик в Терминал:
-# (venv) D:\PythonParty\qa_guru_python_2_06_files>python simple_conspectus_about_read_write_files.py
+# (venv) D:\PythonParty\qa_guru_python_2_06_files>python test_read_write_conspectus.py
 # D:\PythonParty\qa_guru_python_2_06_files\resources //(1)
 # D:\PythonParty\qa_guru_python_2_06_files\resources\tmp //(2)
 
@@ -55,7 +57,7 @@ with open('example.txt', 'w') as f:
     f.write('Hello world\nRow2\nIt\'s row3')
 
 with open('example_created_file.txt', 'w') as f:
-    f.write('My\ncreated\nfile2')
+    f.write('My\ncreated\nfile')
 
 # логика: писать что-то можно только в ОТКРЫТЫЙ файл:
 # Закрывать файл вручную - антипаттерн, нужно стараться использовать контекстный менеджер
@@ -65,15 +67,14 @@ f.write('Hello22345')
 f.close()
 # f.write('Пробую записать что-то в уже ЗАХЛОПНУТЫЙ файл, д.б. ошибка')
 # пример сообщения об ошибке ошибке:
-# simple_conspectus_about_read_write_files.py:None (simple_conspectus_about_read_write_files.py)
-# simple_conspectus_about_read_write_files.py:66: in <module>
+# test_read_write_conspectus.py:None (test_read_write_conspectus.py)
+# test_read_write_conspectus.py:66: in <module>
 #     f.write('Пробую записать что-то в уже ЗАХЛОПНУТЫЙ файл, д.б. ошибка')
 # E   ValueError: I/O operation on closed file.
 
 
 # r здесь - это команда на чтение
 # открой СУЩЕСТВУЮЩИЙ  файл Х('example.txt') прочитай и напечатай в консоли
-# (запуск: python test_csv_conspectus.py / python simple_conspectus_about_read_write_files.py)
 with open('example.txt', 'r') as f:
     file = f.read()
     print(file)
